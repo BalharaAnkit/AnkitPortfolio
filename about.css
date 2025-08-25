@@ -78,14 +78,14 @@ nav li p {
 .About::before {
     content: " ";
     position: absolute;
-    background-image: url(AnkitatUni.jpg);
+    background-image: url(https://i.pinimg.com/736x/4e/c9/a3/4ec9a39e7a83b4f1f2492df9330563f3.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
     height: 100%;
     z-index: -1;
-    opacity: 0.7;
+    opacity: 0.5;
     margin-top: 0px;
 }
 

@@ -28,6 +28,12 @@ nav ul li {
     padding: 0px 33px 0px 33px;
 }
 
+p {
+font-size: large;
+font-weight: bold;
+color: rgb(132, 98, 47);
+}
+
 #logo {
     margin: 10px 5px
 }
@@ -116,8 +122,10 @@ nav li p {
     opacity: 0.5;
 }
 
-.text-grey{
-    color: grey;
+.text-white{
+    color: #a51b39;
+    font-size: larger;
+    font-weight: bold;
   
 }
 
