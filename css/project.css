@@ -1,0 +1,134 @@
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    background-color: rgb(0, 0, 33);
+    color: white;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 97px;
+    background-color: rgb(27, 27, 66);
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav ul li {
+    list-style: none;
+    margin: 0px 33px 0px 33px;
+    padding: 0px 33px 0px 33px;
+}
+
+#logo {
+    margin: 10px 5px
+}
+
+#logo img {
+    height: 77px;
+    width: 77px;
+    border-radius: 200px;
+    transition: all;
+    transition-duration: 2s;
+}
+
+.left {
+    font-size: 1.7rem;
+    margin-left: 15px;
+    color: white;
+}
+
+#logo img:hover {
+    height: 150px;
+    width: 157px;
+}
+
+.col {
+    color: rgb(170, 107, 255);
+}
+
+ul a {
+    color: white;
+    text-decoration: none;
+}
+
+ul a:hover {
+    color: rgb(211, 200, 200);
+    font-size: large;
+    font-weight: bold;
+}
+
+#element {
+    color: rgb(132, 98, 47);
+}
+
+nav li p {
+    margin: 0px 0px 0px -10px;
+}
+
+.projects::before {
+    content: " ";
+    position: absolute;
+    background-image: url(https://img.freepik.com/free-photo/html-system-website-concept_23-2150376770.jpg?w=2000);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.5;
+    margin-top: 0px;
+}
+
+.projects ul li {
+    margin: 14px 24px;
+}
+
+.p {
+    list-style-type: square;
+}
+
+
+a .resume {
+    color: white;
+    font-size: 1rem;
+    margin-top: 44px;
+    width: 123px;
+    height: 32px;
+    border: 2px solid white;
+    text-align: center;
+    padding-top: 8px;
+    border-radius: 8px;
+    margin-top: 14px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a .resume:hover {
+    font-size: large;
+    font-weight: bold;
+    width: 143px;
+    height: 35px;
+    padding-top: 15px;
+    background-color: rgb(165, 68, 68);
+}
+
+.currency{
+    margin-top: 24px;
+}
+
+.amazon{
+    margin-top: 24px;
+}

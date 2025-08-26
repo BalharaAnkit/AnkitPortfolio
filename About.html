@@ -1,112 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AboutME</title>
-    <link rel="stylesheet" href="about.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About Me • Ankit</title>
+  <meta name="description" content="About Ankit Balhara — Computer Science student with experience in web development, cloud, and AI platforms." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="assets/AnkitatUni.jpg" />
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/about.css" />
 </head>
-
 <body>
-    <header>
-        <nav>
-            <a href="http://">
-                <div id="logo">
-                    <img src="AnkitatUni.jpg" alt="Strawberries">
-                </div>
+  <a class="sr-only" href="#main">Skip to content</a>
+
+  <!-- Header / Navbar -->
+  <header>
+    <div class="container nav">
+      <a class="brand" href="index.html" aria-label="Go to homepage">
+        <img src="assets/AnkitatUni.jpg" alt="Ankit profile" />
+        <span>Ankit's Portfolio</span>
+      </a>
+
+      <nav>
+        <button class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation" data-nav-toggle>
+          <span></span>
+        </button>
+        <div class="nav-links" data-nav>
+          <a href="index.html">Home</a>
+          <a href="about.html" class="active">About</a>
+          <a href="projects.html">Projects</a>
+          <a href="contact.html">Contact</a>
+          <div class="socials">
+            <a href="https://www.facebook.com/ankit.blahara.1" target="_blank" rel="noreferrer noopener" aria-label="Facebook">
+              <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook icon" />
             </a>
-            <div class="left">
-                Ankit's Portfolio
-            </div>
-            <div class="right">
-                <ul>
-                    <a href="index.html">
-                        <li>Home</li>
-                    </a>
-                    <a href="About.html">
-                        <li>About</li>
-                    </a>
-                    <a href="projects.html">
-                        <li>Projects</li>
-                    </a>
-                    <a href="contact.html">
-                        <li>Contact</li>
-                    </a>
-                    <li class="Fb"><a href="https://www.facebook.com/ankit.blahara.1" target="_blank"><img
-                                src="https://cdn-icons-png.flaticon.com/512/2335/2335286.png" alt="Fb" height="30px"
-                                width="40px">
-                            <p class="f">Facebook</p>
-                        </a></li>
-                    <li class="Insta"><a href="https://www.instagram.com/balharaankit27/" target="_blank"><img
-                                src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg"
-                                alt="Fb" height="30px" width="40px">
-                            <p class="f">Istagram</p>
-                        </a></li>
-                    <li class="Insta"><a href="https://www.linkedin.com/in/ankit-balhara-8013b8228/"
-                            target="_blank"><img src="linkden.png.png" alt="Fb" height="30px" width="40px">
-                            <p class="f">Linkedin</p>
-                        </a></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
-    <div class="About">
-        <div class="intro">
-            <h1>My Intro</h1>
-            <div class="details">
-                <ul>
-                    <li>
-                        <div class="name">
-                            Name: Hello, I'm Ankit.
-                        </div>
-                    </li>
-                    <li>
-                        <div class="Age">
-                            Age: I'm currently 24 years old.
-                        </div>
-                    </li>
-                    <li>
-                        <div class="Country">
-                            Country: I hail from the diverse and culturally rich country of <a
-                                href="https://en.wikipedia.org/wiki/India" target="_blank" style="color: gold;">India</a>.
-                        </div>
-                    </li>
-                    <li>
-                        <div class="village">
-                            Village: My roots trace back to the charming village of Chitana, where I have fond memories
-                            of my upbringing.
-                        </div>
-                    </li>
-                    <li>
-                        <div class="Education">
-                             Education: I completed my senior secondary education at Arya National
-                            School, where I laid the foundation for my academic journey.
-                        </div>
-                    </li>
-                    <li>
-                        Diploma in Front-End Development: In 2022, I also earned a diploma in Front-End Development from Disha Technology.
-                    </li>
-                    <li>
-                        Current Pursuit: I'm currently enrolled in a Bachelor degree in (BSC) Computer Science at Royal Holloway University in London.
-                    </li>
-                    <h1>Skills:By My Experience I have Learned following Skills
-                    </h1>
-                    <li> Team Player: I thrive in collaborative environments and enjoy working with others to achieve common goals.</li>
-                    <li>Self-Starter: I have a proactive mindset, always eager to take initiative and lead when needed.</li>
-                    <li>Self-Motivated: My internal drive keeps me motivated to learn, grow, and excel in my endeavors.</li>
-                    <h1>My Technical and Programming Skills: </h1>
-                    <li>I have a good mix of understanding and practical experience of the following: HTML, CSS, JavaScript, TypeScript, Angular, React, NodeJS,</li>
-                     Bootstrap, GitHub,Twilio Studio, AWS Lambda, Azure Functions, GraphQL, SendGrid, Monday.com, OperatingSystems, Networking, Twilio, flex, SQL, Python, AI platforms(Kling AI, Invideo, Runway).
-                    <li>Operating Systems: I have experience with various operating systems, contributing to my versatility in software development.</li>
-                    <li>Information Security: I understand the importance of information security and adhere to best practices in securing digital assets.</li>
-                </ul>
-
-            </div>
+            <a href="https://www.instagram.com/balharaankit27/" target="_blank" rel="noreferrer noopener" aria-label="Instagram">
+              <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram icon" />
+            </a>
+            <a href="https://www.linkedin.com/in/ankit-balhara-8013b8228/" target="_blank" rel="noreferrer noopener" aria-label="LinkedIn">
+              <img src="https://cdn-icons-png.flaticon.com/512/3536/3536505.png" alt="LinkedIn icon" />
+            </a>
+          </div>
+          <div class="nav-cta">
+            <a class="btn outline" href="assets/AnkitCV..pdf" target="_blank" rel="noreferrer noopener">View CV</a>
+          </div>
         </div>
+      </nav>
     </div>
-    </div>
-    <ul></ul>
-</body>
+  </header>
 
+          <!-- Right Column (illustration) -->
+        <div class="hero-media reveal" aria-hidden="true">
+          <img class="hero-art" src="https://i.pinimg.com/736x/4e/c9/a3/4ec9a39e7a83b4f1f2492df9330563f3.jpg" alt="Developer illustration" />
+        </div>
+
+  <!-- Main -->
+  <main id="main" class="about-page">
+    <section class="section container about about-content">
+      <div class="about-layout">
+        <!-- Left Column (text + cards) -->
+        <div class="about-main">
+          <h1 class="reveal">About Me</h1>
+          <p class="lead reveal">
+            Hello, I’m <strong>Ankit</strong>, currently pursuing a BSc in Computer Science at Royal Holloway University in London.  
+            Alongside my academic journey, I bring hands-on experience across modern web development, cloud platforms, and AI technologies.
+          </p>
+
+          <div class="about-details grid">
+            <!-- Card: Personal Info -->
+            <div class="about-card reveal">
+              <h2>Personal Info</h2>
+              <ul class="list">
+                <li><strong>Age:</strong> 24</li>
+                <li><strong>Country:</strong> <a href="https://en.wikipedia.org/wiki/India" target="_blank">India</a></li>
+                <li><strong>Village:</strong> Chitana</li>
+                <li><strong>Education:</strong> Senior Secondary at Arya National School, Diploma in Front-End Development (Disha Technology, 2022), pursuing BSc in Computer Science.</li>
+              </ul>
+            </div>
+
+            <!-- Card: Skills -->
+            <div class="about-card reveal">
+              <h2>Skills</h2>
+              <ul class="list">
+                <li>Team Player, proactive and self-motivated learner.</li>
+                <li>Technical stack: HTML, CSS, JavaScript, TypeScript, Angular, React, Node.js, Bootstrap.</li>
+                <li>Backend & Cloud: AWS Lambda, Azure Functions, GraphQL, SQL.</li>
+                <li>Tools & APIs: GitHub, Twilio, SendGrid, Monday.com, Flex.</li>
+                <li>Other: Python, OS/Networking fundamentals, AI platforms (Kling AI, Invideo, Runway).</li>
+              </ul>
+            </div>
+
+                        <!-- Card: Interests & Hobbies -->
+            <div class="about-card reveal">
+              <h2>Interests & Hobbies</h2>
+              <ul class="list">
+                <li>Learning new technologies and experimenting with AI tools.</li>
+                <li>Building side projects that solve real-world problems.</li>
+                <li>Outdoor activities to stay active and refreshed.</li>
+                <li>Love playing and watching cricket.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Scroll Top -->
+  <section class="scroll-top-section reveal">
+    <button class="scroll-top-btn" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+      ↑ Scroll to Top
+    </button>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
+      <small>© <span id="year"></span> Ankit Balhara. All rights reserved.</small>
+      <div class="socials">
+        <a href="https://github.com/BalharaAnkit" target="_blank" rel="noreferrer noopener" aria-label="GitHub">
+          <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub icon" />
+        </a>
+        <a href="mailto:balharaankit768@gmail.com" aria-label="Email" class="email-link">
+          <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" alt="Email icon" />
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/index.js"></script>
+  <script src="js/about.js"></script>
+</body>
 </html>

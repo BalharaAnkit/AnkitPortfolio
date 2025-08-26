@@ -1,0 +1,165 @@
+/* =====================
+   About Page Styles
+===================== */
+
+.about-page {
+  padding: 4rem 1rem;
+  background: linear-gradient(180deg, #0f0f1a, #0d0d1a);
+  color: #fff;
+}
+
+.about-layout {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+/* Left column */
+.about-main {
+  flex: 1 1 55%;
+  min-width: 300px;
+}
+
+.about-main h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1.2rem;
+  color: var(--accent);
+}
+
+/* Lead text with gradient color like homepage title */
+.about-main .lead {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Cards */
+.about-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.8rem;
+  margin-top: 4rem; /* increased top margin to push cards lower */
+}
+
+.about-card {
+  background: linear-gradient(145deg, #1a1a2e, #16213e);
+  border-radius: 1rem;
+  padding: 1.8rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  cursor: pointer; /* pointer on hover */
+}
+
+.about-card h2 {
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+  color: #6c63ff;
+}
+
+.about-card .list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.about-card .list li {
+  margin-bottom: 0.6rem;
+  line-height: 1.4;
+}
+
+/* Hover effect for cards */
+.about-card:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 12px 25px rgba(108,99,255,0.7);
+  background: linear-gradient(145deg, #252545, #1a1a2e);
+}
+
+/* ========== Card Modal Effect ========== */
+.card-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 1000;
+}
+
+.card-modal.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.card-modal .about-card {
+  max-width: 600px;
+  width: 90%;
+  transform: scale(0.8);
+  transition: transform 0.3s ease;
+}
+
+.card-modal.active .about-card {
+  transform: scale(1);
+}
+.card-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Right column (image) */
+.hero-media {
+  flex: 1 1 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-media img.hero-art {
+  width: 100%;
+  max-width: 520px; /* increased size */
+  border-radius: 1rem;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.5);
+  transition: transform 0.4s ease;
+}
+
+.hero-media img.hero-art:hover {
+  transform: scale(1.08);
+}
+
+/* Reveal animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .about-layout {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-media {
+    margin-top: 2rem;
+  }
+}
