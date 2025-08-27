@@ -1,4 +1,6 @@
+// =====================
 // Typed.js effect
+// =====================
 const typed = new Typed('#element', {
   strings: [
     'I am a Passionate Web Developer.',
@@ -11,7 +13,9 @@ const typed = new Typed('#element', {
   loop: true
 });
 
+// =====================
 // Mobile nav toggle
+// =====================
 const nav = document.querySelector('[data-nav]');
 const toggle = document.querySelector('[data-nav-toggle]');
 toggle.addEventListener('click', () => {
@@ -21,7 +25,9 @@ toggle.addEventListener('click', () => {
   toggle.classList.toggle('active'); // trigger X animation
 });
 
+// =====================
 // Navbar shadow on scroll
+// =====================
 const header = document.querySelector('header');
 window.addEventListener('scroll', () => {
   if (window.scrollY > 12) {
@@ -31,7 +37,9 @@ window.addEventListener('scroll', () => {
   }
 });
 
+// =====================
 // Reveal on scroll with stagger effect
+// =====================
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((e, i) => {
     if (e.isIntersecting) {
@@ -43,7 +51,44 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
+// =====================
 // Year in footer
+// =====================
 document.getElementById('year').textContent = new Date().getFullYear();
 
+// =====================
+// Card Modal Interactions (for Experience cards)
+// =====================
+const cards = document.querySelectorAll(".card");
 
+cards.forEach(card => {
+  card.addEventListener("click", () => {
+    // Create modal wrapper
+    const modal = document.createElement("div");
+    modal.classList.add("card-modal");
+    modal.innerHTML = `
+      <div class="card">
+        ${card.innerHTML}
+      </div>
+      <span class="card-modal-close">&times;</span>
+    `;
+    document.body.appendChild(modal);
+
+    // Trigger transition
+    setTimeout(() => modal.classList.add("active"), 10);
+
+    // Close on X click
+    modal.querySelector(".card-modal-close").addEventListener("click", () => {
+      modal.classList.remove("active");
+      setTimeout(() => modal.remove(), 300);
+    });
+
+    // Close if background clicked
+    modal.addEventListener("click", e => {
+      if (e.target === modal) {
+        modal.classList.remove("active");
+        setTimeout(() => modal.remove(), 300);
+      }
+    });
+  });
+});

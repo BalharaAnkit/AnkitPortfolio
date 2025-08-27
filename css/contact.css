@@ -1,103 +1,236 @@
-* {
-    margin: 0;
-    padding: 0;
+/* =====================
+   Contact Page Styles
+===================== */
+
+.contact-page {
+  padding: 4rem 1rem;
+  background: linear-gradient(180deg, #0f0f1a, #0d0d1a);
+  color: #fff;
 }
 
-
-body {
-    background-color: rgb(0, 0, 33);
-    color: white;
+/* Layout similar to About page */
+.contact-layout {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
 }
 
-nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    height: 97px;
-    background-color: rgb(27, 27, 66);
+/* Left column */
+.contact-main {
+  flex: 1 1 55%;
+  min-width: 300px;
 }
 
-nav ul {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.contact-main h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1.2rem;
+  color: var(--accent);
 }
 
-nav ul li {
-    list-style: none;
-    margin: 0px 33px 0px 33px;
-    padding: 0px 33px 0px 33px;
+/* Lead text with gradient like homepage title */
+.contact-main .lead {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-#logo {
-    margin: 10px 5px
+/* Cards */
+.contact-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.8rem;
+  margin-top: 1rem;
 }
 
-#logo img {
-    height: 77px;
-    width: 77px;
-    border-radius: 200px;
-    transition: all;
-    transition-duration: 2s;
+.contact-card {
+  background: linear-gradient(145deg, #1a1a2e, #16213e);
+  border-radius: 1rem;
+  padding: 1.6rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  cursor: pointer; /* pointer on hover */
 }
 
-.left {
-    font-size: 1.7rem;
-    margin-left: 15px;
-    color: white;
+.contact-card h2 {
+  margin-bottom: 0.8rem;
+  font-size: 1.3rem;
+  color: #8b5cf6;
 }
 
-#logo img:hover {
-    height: 150px;
-    width: 157px;
+.contact-card .list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-.col {
-    color: rgb(170, 107, 255);
+.contact-card .list li {
+  margin-bottom: 0.55rem;
+  line-height: 1.5;
 }
 
-ul a {
-    color: white;
-    text-decoration: none;
+.contact-card a { 
+  color: var(--text); 
+  text-decoration: underline; 
 }
 
-ul a:hover {
-    color: rgb(211, 200, 200);
-    font-size: large;
-    font-weight: bold;
+/* Hover effect (same style as About cards) */
+.contact-card:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 12px 25px rgba(108,99,255,0.7);
+  background: linear-gradient(145deg, #252545, #1a1a2e);
 }
 
-#element {
-    color: rgb(132, 98, 47);
+/* ========== Card Modal Effect ========== */
+.card-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 1000;
 }
 
-nav li p {
-    margin: 0px 0px 0px -10px;
+.card-modal.active {
+  opacity: 1;
+  pointer-events: all;
 }
 
-
-.Pic::before {
-    content: " ";
-    background-image: url(https://t3.ftcdn.net/jpg/06/08/82/50/360_F_608825085_MuQopoWCJQJ8BUa4u2z1DECXtkuoVLmj.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: absolute;
-    width: 100%;
-    height: 85%;
-    z-index: -1;
-    margin: 0px 0px;
+.card-modal .contact-card {
+  max-width: 600px;
+  width: 90%;
+  transform: scale(0.8);
+  transition: transform 0.3s ease;
 }
 
-.contactMe {
-    display: flex;
+.card-modal.active .contact-card {
+  transform: scale(1);
 }
 
-.contact ul li{
-    font-size: 1.5rem;
-    margin: 14px 24px;
+.card-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
 }
 
-ul li  a{
-    color: rgb(155, 19, 19);
+/* Right column (image) */
+.hero-media {
+  flex: 1 1 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-media .hero-art {
+  width: 100%;
+  max-width: 520px;
+  border-radius: 1rem;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.5);
+  transition: transform 0.4s ease;
+}
+
+.hero-media .hero-art:hover {
+  transform: scale(1.08);
+}
+
+/* Form */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.95rem 1rem;
+  border-radius: 0.8rem;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,.04);
+  color: var(--text);
+  outline: none;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder { 
+  color: var(--muted); 
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(139,92,246,.18);
+}
+
+/* Required field invalid style */
+.contact-form input:invalid,
+.contact-form textarea:invalid {
+  border-color: #ff4d4d;
+  box-shadow: 0 0 0 2px rgba(255,77,77,0.3);
+}
+
+.contact-form .btn { 
+  margin-top: 0.2rem; 
+}
+
+/* Form feedback messages */
+.form-feedback {
+  margin-bottom: 1rem;
+  font-weight: 600;
+  padding: 0.8rem 1rem;
+  border-radius: 0.6rem;
+  display: none;
+}
+.form-feedback.error {
+  display: block;
+  background: rgba(220, 38, 38, 0.1);
+  color: #ef4444;
+  border: 1px solid #ef4444;
+}
+.form-feedback.success {
+  display: block;
+  background: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+  border: 1px solid #10b981;
+}
+
+/* Inline error messages */
+.error-msg {
+  display: block;
+  margin-top: 0.3rem;
+  font-size: 0.85rem;
+  color: #ef4444;
+}
+
+/* Reveal animations (match About page approach) */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .8s ease, transform .8s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .contact-layout { flex-direction: column; }
+  .hero-media { margin-top: 1rem; }
 }
