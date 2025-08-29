@@ -135,35 +135,89 @@ resetBtn.addEventListener("click", () => {
      Gallery inside modal
      ===================== */
   function initGallery(gallery) {
-    if (!gallery) return;
-    const track   = gallery.querySelector(".gallery-track");
-    const images  = track ? track.querySelectorAll("img") : [];
-    const prevBtn = gallery.querySelector("[data-prev]");
-    const nextBtn = gallery.querySelector("[data-next]");
-    const dotsEl  = gallery.querySelector("[data-dots]");
-    if (!track || !images.length || !dotsEl) return;
+  if (!gallery) return;
 
-    let idx = 0;
-    dotsEl.innerHTML = "";
-    images.forEach((_, i) => {
-      const dot = document.createElement("button");
-      if (i === 0) dot.classList.add("active");
-      dot.addEventListener("click", () => { idx = i; update(); });
-      dotsEl.appendChild(dot);
+  const track = gallery.querySelector(".gallery-track");
+  const images = track.querySelectorAll("img");
+  const prevBtn = gallery.querySelector("[data-prev]");
+  const nextBtn = gallery.querySelector("[data-next]");
+  const dotsContainer = gallery.querySelector("[data-dots]");
+
+  let index = 0;
+  let autoSlideInterval;
+  let isHovered = false;
+
+  // create dots
+  dotsContainer.innerHTML = "";
+  images.forEach((_, i) => {
+    const dot = document.createElement("button");
+    if (i === 0) dot.classList.add("active");
+    dot.addEventListener("click", () => {
+      index = i;
+      updateGallery();
+      if (!isHovered) resetAutoSlide();
     });
+    dotsContainer.appendChild(dot);
+  });
 
-    function update() {
-      track.style.transform = `translateX(-${idx * 100}%)`;
-      dotsEl.querySelectorAll("button").forEach((d, i) => {
-        d.classList.toggle("active", i === idx);
-      });
-    }
-
-    prevBtn && prevBtn.addEventListener("click", () => { idx = (idx - 1 + images.length) % images.length; update(); });
-    nextBtn && nextBtn.addEventListener("click", () => { idx = (idx + 1) % images.length; update(); });
-
-    update();
+  function updateGallery() {
+    track.style.transform = `translateX(-${index * 100}%)`;
+    dotsContainer.querySelectorAll("button").forEach((dot, i) => {
+      dot.classList.toggle("active", i === index);
+    });
   }
+
+  function showNext() {
+    index = (index + 1) % images.length;
+    updateGallery();
+  }
+
+  function showPrev() {
+    index = (index - 1 + images.length) % images.length;
+    updateGallery();
+  }
+
+  // Auto-slide
+  function startAutoSlide() {
+    autoSlideInterval = setInterval(showNext, 5000);
+  }
+  function stopAutoSlide() {
+    clearInterval(autoSlideInterval);
+  }
+  function resetAutoSlide() {
+    stopAutoSlide();
+    startAutoSlide();
+  }
+
+  // Buttons
+  prevBtn.addEventListener("click", () => {
+    showPrev();
+    if (!isHovered) resetAutoSlide();
+  });
+  nextBtn.addEventListener("click", () => {
+    showNext();
+    if (!isHovered) resetAutoSlide();
+  });
+
+  // Keyboard navigation
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowLeft") { showPrev(); if (!isHovered) resetAutoSlide(); }
+    if (e.key === "ArrowRight") { showNext(); if (!isHovered) resetAutoSlide(); }
+  });
+
+  // Pause/resume on hover
+  gallery.addEventListener("mouseenter", () => {
+    isHovered = true;
+    stopAutoSlide();
+  });
+  gallery.addEventListener("mouseleave", () => {
+    isHovered = false;
+    startAutoSlide();
+  });
+
+  updateGallery();
+  startAutoSlide();
+}
 
   /* =====================
      Footer year
