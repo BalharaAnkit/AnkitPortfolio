@@ -1,29 +1,10 @@
 // =====================
-// About Page JS
+// About.js – About Page Specific Scripts
 // =====================
 
 document.addEventListener("DOMContentLoaded", () => {
   // =====================
-  // Reveal on scroll
-  // =====================
-  const revealElements = document.querySelectorAll(".reveal");
-
-  function revealOnScroll() {
-    const windowHeight = window.innerHeight;
-    revealElements.forEach(el => {
-      const elementTop = el.getBoundingClientRect().top;
-      if (elementTop < windowHeight - 100) {
-        el.classList.add("active");
-      }
-    });
-  }
-
-  window.addEventListener("scroll", revealOnScroll);
-  revealOnScroll(); // run once on load
-
-
-  // =====================
-  // Card Modal Interactions
+  // Card Modal Interactions (for About cards)
   // =====================
   const cards = document.querySelectorAll(".about-card");
 
