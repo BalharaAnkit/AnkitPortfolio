@@ -1,50 +1,50 @@
 // =====================
-// Contact Page JS
+// Contact.js – Contact Page Specific Scripts
 // =====================
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Reveal on scroll (same as About page)
-  const reveals = document.querySelectorAll(".reveal");
-  const runReveal = () => {
-    const h = window.innerHeight;
-    reveals.forEach(el => {
-      const top = el.getBoundingClientRect().top;
-      if (top < h - 100) el.classList.add("active");
-    });
-  };
-  window.addEventListener("scroll", runReveal);
-  runReveal();
-
-  // Card modal effect (same as About page)
+  // =====================
+  // Card Modal Interactions (for Contact cards)
+  // =====================
   const contactCards = document.querySelectorAll(".contact-card");
-  const modal = document.createElement("div");
-  modal.classList.add("card-modal");
-  document.body.appendChild(modal);
 
   contactCards.forEach(card => {
     card.addEventListener("click", () => {
+      // Create modal wrapper
+      const modal = document.createElement("div");
+      modal.classList.add("card-modal");
       modal.innerHTML = `
         <div class="contact-card">
-          <span class="card-modal-close">&times;</span>
           ${card.innerHTML}
         </div>
+        <span class="card-modal-close">&times;</span>
       `;
-      modal.classList.add("active");
+      document.body.appendChild(modal);
 
+      // Trigger transition
+      setTimeout(() => modal.classList.add("active"), 10);
+
+      // Close on X click
       modal.querySelector(".card-modal-close").addEventListener("click", () => {
         modal.classList.remove("active");
+        setTimeout(() => modal.remove(), 300);
       });
 
-      modal.addEventListener("click", (e) => {
-        if (e.target === modal) modal.classList.remove("active");
+      // Close if background clicked
+      modal.addEventListener("click", e => {
+        if (e.target === modal) {
+          modal.classList.remove("active");
+          setTimeout(() => modal.remove(), 300);
+        }
       });
     });
   });
 
+  // =====================
   // Form validation & submission
+  // =====================
   const form = document.querySelector(".contact-form");
   if (form) {
-    // Add container for feedback
     const feedback = document.createElement("div");
     feedback.className = "form-feedback";
     form.prepend(feedback);
@@ -62,7 +62,6 @@ document.addEventListener("DOMContentLoaded", () => {
       feedback.className = "form-feedback";
       form.querySelectorAll(".error-msg").forEach(el => el.remove());
 
-      // Utility to add error
       const showError = (field, msg) => {
         valid = false;
         field.classList.add("invalid");
@@ -107,8 +106,4 @@ document.addEventListener("DOMContentLoaded", () => {
       form.reset();
     });
   }
-
-  // Footer year
-  const y = document.getElementById("year");
-  if (y) y.textContent = new Date().getFullYear();
 });
