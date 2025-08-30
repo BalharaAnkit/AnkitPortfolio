@@ -1,0 +1,467 @@
+/* ===========================
+   Filters (new/enhanced)
+   =========================== */
+.filters {
+  margin: 0 auto 1.25rem;
+}
+.filters .filter-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .65rem;
+  margin-bottom: .75rem;
+}
+.filter-btn {
+  appearance: none;
+  cursor: pointer;
+  user-select: none;
+  padding: .55rem 1.05rem;
+  border-radius: 999px;
+  border: 1px solid rgba(159,140,255,.35);
+  background: linear-gradient(180deg, rgba(159,140,255,.12), rgba(159,140,255,.06));
+  color: #ecebff;
+  font-weight: 600;
+  font-size: .95rem;
+  letter-spacing: .15px;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.05),
+    0 6px 18px rgba(0,0,0,.18);
+  transition: transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease, color .18s ease;
+}
+.filter-btn:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.05),
+    0 10px 26px rgba(0,0,0,.28);
+  border-color: rgba(159,140,255,.55);
+}
+.filter-btn:active {
+  transform: translateY(0);
+}
+.filter-btn.active {
+  background: linear-gradient(180deg, var(--accent, #9f8cff), #7f6dff);
+  color: #0b0c14;
+  border-color: transparent;
+  box-shadow:
+    0 10px 26px rgba(127,109,255,.45),
+    0 0 0 3px rgba(127,109,255,.35) inset;
+}
+.filter-btn:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 2px rgba(255,255,255,.85),
+    0 0 0 6px rgba(127,109,255,.45);
+}
+
+.reset-wrap {
+  margin-top: 0.75rem;
+  text-align: center;
+}
+
+.reset-btn {
+  padding: 0.6rem 1.25rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  background: linear-gradient(180deg, #ff7676, #ff4747);
+  color: #fff;
+  border: none;
+  box-shadow: 0 6px 18px rgba(255, 71, 71, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.reset-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(255, 71, 71, 0.55);
+}
+
+/* ===========================
+   Project Page Styles
+   =========================== */
+
+/* Grid layout */
+.projects.container.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+/* ===========================
+   Project Cards
+   =========================== */
+.project-card {
+  position: relative;
+  background: var(--card-bg, #161821);
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.project-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+/* Hover hint overlay */
+.card-hint {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  color: #fff;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+  font-size: 1.2rem;
+}
+
+.project-card:hover .card-hint {
+  opacity: 1;
+}
+
+/* Make placement cards flex containers */
+.project-card[data-type*="placement"] {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Ensure image stays at the top, content fills rest */
+.project-card[data-type*="placement"] img {
+  flex-shrink: 0;
+}
+
+.project-card[data-type*="placement"] .project-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1; /* take remaining height under image */
+}
+
+/* Push badges row to the bottom */
+.project-card[data-type*="placement"] .badges-icons {
+  margin-top: auto; /* ensures it's pinned at bottom */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Content inside card */
+.project-content {
+  padding: 1rem 1.25rem;
+}
+
+.project-content h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.project-content p {
+  font-size: 0.95rem;
+  line-height: 1.45;
+  margin-bottom: 0.75rem;
+}
+
+.project-content .see-more {
+  display: inline-block;
+  font-size: 0.85rem;
+  color: var(--accent, #9f8cff);
+  font-weight: 600;
+  margin-left: 0.25rem;
+}
+
+.project-content .badge {
+  display: inline-block;
+  background: rgba(159, 140, 255, 0.15);
+  color: var(--accent, #9f8cff);
+  padding: 0.25rem 0.6rem;
+  border-radius: 1rem;
+  font-size: 0.75rem;
+  margin-right: 0.25rem;
+}
+
+/* ===========================
+   Modal Overlay
+   =========================== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 2rem;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Modal content */
+.modal-content {
+  background: #1d1f2a;
+  border-radius: 1.25rem;
+  max-width: 1100px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 2rem;
+  box-shadow: 0 0 40px rgba(159,140,255,0.5);
+  position: relative;
+  animation: slideUp 0.35s ease;
+  padding-top: 1rem;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Modal close button */
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.75rem;
+  cursor: pointer;
+  color: #fff;
+  background: none;
+  border: none;
+}
+
+/* ===========================
+   Gallery (Slider)
+   =========================== */
+.gallery {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.gallery-track {
+  display: flex;
+  transition: transform 0.45s ease;
+}
+
+.gallery-track img {
+  width: 100%;
+  flex-shrink: 0;
+  border-radius: 0.75rem;
+}
+
+/* ===================== */
+/* Modal Gallery Styling */
+/* ===================== */
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Gallery wrapper */
+.gallery {
+  position: relative;
+  overflow: hidden;
+  max-width: 900px;
+  margin: 0 auto;
+  border-radius: 12px;
+  background: #090909;
+  padding: 10px;
+  box-shadow: 0 0 20px rgba(165, 162, 162, 0.6);
+}
+
+.gallery img {
+  cursor: pointer;
+}
+
+/* Track of images */
+.gallery-track {
+  display: flex;
+  transition: transform 0.4s ease-in-out;
+}
+
+/* Images */
+.gallery-track img {
+  width: 100%;
+  max-height: 450px;
+  object-fit: contain;
+  border-radius: 10px;
+  background: #1c1c2a;
+  padding: 8px;
+  box-shadow: 0 0 15px rgba(0, 180, 255, 0.7);
+}
+
+/* Elegant Prev & Next buttons */
+.gallery button[data-prev],
+.gallery button[data-next] {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.35);
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  border-radius: 30px; /* pill-like */
+  padding: 12px 22px;  /* wider, not too tall */
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.gallery button[data-prev]:hover,
+.gallery button[data-next]:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: #00f2fe;
+  box-shadow: 0 0 16px #00f2fe;
+}
+
+.gallery button[data-prev] { left: 15px; }
+.gallery button[data-next] { right: 15px; }
+
+
+/* Dots */
+.gallery [data-dots] {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  gap: 8px;
+}
+
+.gallery [data-dots] button {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #888888;
+  border: none;
+  cursor: pointer;
+}
+
+.gallery [data-dots] button.active {
+  background: #21ed06;
+  box-shadow: 0 0 6px #00b4ff;
+}
+
+/* Divider line below gallery */
+.modal-body::after {
+  content: "";
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(90deg, transparent, #00b4ff, transparent);
+  margin-top: 1rem;
+  border-radius: 50%;
+}
+
+/* ===========================
+   Modal Text
+   =========================== */
+.details-copy {
+  color: #f0f0f0;
+}
+
+.details-copy h2 {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  margin-top: 0.5rem;
+}
+
+.details-copy p {
+  margin-bottom: 0.85rem;
+  line-height: 1.6;
+}
+
+.details-copy ul {
+  margin: 0 0 1rem 1.2rem;
+  padding: 0;
+}
+
+.details-copy li {
+  margin-bottom: 0.5rem;
+}
+
+.details-copy strong {
+  color: var(--accent, #9f8cff);
+}
+
+/* badges + github aligned */
+.badges-icons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+/* Base GitHub icon button inside project cards */
+.project-github img {
+  width: 52px;    
+  height: 52px;
+  padding: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05); /* subtle background */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+}
+
+/* Shared hover scale */
+.project-github:hover img {
+  transform: scale(1.15);
+}
+
+/* --- Personal GitHub (blue) --- */
+.project-github-personal img {
+  filter: brightness(0) saturate(100%) invert(34%) sepia(93%) saturate(2000%) hue-rotate(200deg) brightness(110%) contrast(100%);
+}
+.project-github-personal:hover img {
+  filter: brightness(0) saturate(100%) invert(34%) sepia(93%) saturate(2000%) hue-rotate(200deg) brightness(120%) contrast(105%);
+  box-shadow: 0 0 15px #3b82f6, 0 0 25px rgba(59,130,246,0.8);
+}
+
+/* --- Placement GitHub (green) --- */
+.project-github-placement img {
+  filter: brightness(0) saturate(100%) invert(42%) sepia(91%) saturate(500%) hue-rotate(120deg) brightness(105%) contrast(95%);
+}
+.project-github-placement:hover img {
+  filter: brightness(0) saturate(100%) invert(42%) sepia(91%) saturate(500%) hue-rotate(120deg) brightness(120%) contrast(105%);
+  box-shadow: 0 0 15px #10b981, 0 0 25px rgba(16,185,129,0.8);
+}
+
+.details-heading {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* keep items together on left side */
+  gap: 18px; /* space between title and icon */
+  margin-bottom: 16px;
+}
+
+.details-heading h2 {
+  margin: 0;
+  flex: none;
+}
+
+/* Bigger GitHub icon for modals */
+.details-heading .project-github img {
+  width: 64px;  
+  height: 64px;
+  padding: 10px;
+  border-radius: 50%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.details-heading .project-github:hover img {
+  transform: scale(1.15);
+  filter: brightness(0) saturate(100%) invert(42%) sepia(91%) saturate(500%) hue-rotate(120deg) brightness(120%) contrast(105%);
+  box-shadow: 0 0 15px #10b981, 0 0 25px rgba(16,185,129,0.8);
+}
