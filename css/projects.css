@@ -130,6 +130,31 @@
   opacity: 1;
 }
 
+/* Make placement cards flex containers */
+.project-card[data-type*="placement"] {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Ensure image stays at the top, content fills rest */
+.project-card[data-type*="placement"] img {
+  flex-shrink: 0;
+}
+
+.project-card[data-type*="placement"] .project-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1; /* take remaining height under image */
+}
+
+/* Push badges row to the bottom */
+.project-card[data-type*="placement"] .badges-icons {
+  margin-top: auto; /* ensures it's pinned at bottom */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 /* Content inside card */
 .project-content {
   padding: 1rem 1.25rem;
@@ -370,4 +395,73 @@
 
 .details-copy strong {
   color: var(--accent, #9f8cff);
+}
+
+/* badges + github aligned */
+.badges-icons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+/* Base GitHub icon button inside project cards */
+.project-github img {
+  width: 52px;    
+  height: 52px;
+  padding: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05); /* subtle background */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+}
+
+/* Shared hover scale */
+.project-github:hover img {
+  transform: scale(1.15);
+}
+
+/* --- Personal GitHub (blue) --- */
+.project-github-personal img {
+  filter: brightness(0) saturate(100%) invert(34%) sepia(93%) saturate(2000%) hue-rotate(200deg) brightness(110%) contrast(100%);
+}
+.project-github-personal:hover img {
+  filter: brightness(0) saturate(100%) invert(34%) sepia(93%) saturate(2000%) hue-rotate(200deg) brightness(120%) contrast(105%);
+  box-shadow: 0 0 15px #3b82f6, 0 0 25px rgba(59,130,246,0.8);
+}
+
+/* --- Placement GitHub (green) --- */
+.project-github-placement img {
+  filter: brightness(0) saturate(100%) invert(42%) sepia(91%) saturate(500%) hue-rotate(120deg) brightness(105%) contrast(95%);
+}
+.project-github-placement:hover img {
+  filter: brightness(0) saturate(100%) invert(42%) sepia(91%) saturate(500%) hue-rotate(120deg) brightness(120%) contrast(105%);
+  box-shadow: 0 0 15px #10b981, 0 0 25px rgba(16,185,129,0.8);
+}
+
+.details-heading {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* keep items together on left side */
+  gap: 18px; /* space between title and icon */
+  margin-bottom: 16px;
+}
+
+.details-heading h2 {
+  margin: 0;
+  flex: none;
+}
+
+/* Bigger GitHub icon for modals */
+.details-heading .project-github img {
+  width: 64px;  
+  height: 64px;
+  padding: 10px;
+  border-radius: 50%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.details-heading .project-github:hover img {
+  transform: scale(1.15);
+  filter: brightness(0) saturate(100%) invert(42%) sepia(91%) saturate(500%) hue-rotate(120deg) brightness(120%) contrast(105%);
+  box-shadow: 0 0 15px #10b981, 0 0 25px rgba(16,185,129,0.8);
 }

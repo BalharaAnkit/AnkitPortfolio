@@ -1,20 +1,7 @@
-// js/projects.js
-
+// =====================
+// Projects.js – Projects Page Specific Scripts
+// =====================
 document.addEventListener("DOMContentLoaded", () => {
-  /* =====================
-     Reveal on scroll
-     ===================== */
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach((e) => {
-      if (e.isIntersecting) {
-        e.target.classList.add("in");
-        io.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.18 });
-
-  document.querySelectorAll(".reveal").forEach(el => io.observe(el));
-
   /* =====================
      Filtering (both groups)
      ===================== */
@@ -49,7 +36,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const f = active[scope];
         if (f !== "all" && !types.includes(f)) { show = false; break; }
       }
-      // rely on your CSS for display; just hide/show
       card.style.display = show ? "" : "none";
     });
   }
@@ -57,29 +43,26 @@ document.addEventListener("DOMContentLoaded", () => {
   applyFilters(); // initial
 
   // =====================
-// Reset Filters
-// =====================
-const resetBtn = document.getElementById("reset-filters");
-
-resetBtn.addEventListener("click", () => {
-  // clear active from all groups
-  filterGroups.forEach(group => {
-    const btns = group.querySelectorAll(".filter-btn");
-    btns.forEach(b => b.classList.remove("active"));
-    // always reset to the "All" button in each group
-    const allBtn = group.querySelector('[data-filter="all"]');
-    if (allBtn) allBtn.classList.add("active");
-  });
-
-  applyFilters(); // show all cards
-});
+  // Reset Filters
+  // =====================
+  const resetBtn = document.getElementById("reset-filters");
+  if (resetBtn) {
+    resetBtn.addEventListener("click", () => {
+      filterGroups.forEach(group => {
+        const btns = group.querySelectorAll(".filter-btn");
+        btns.forEach(b => b.classList.remove("active"));
+        const allBtn = group.querySelector('[data-filter="all"]');
+        if (allBtn) allBtn.classList.add("active");
+      });
+      applyFilters();
+    });
+  }
 
   /* =====================
-     Modal (uses your .modal-overlay CSS)
+     Modal (Project details)
      ===================== */
   const detailsStore = document.querySelector(".project-details-store");
 
-  // build overlay once and reuse
   const overlay = document.createElement("div");
   overlay.className = "modal-overlay";
   overlay.style.display = "none";
@@ -94,7 +77,6 @@ resetBtn.addEventListener("click", () => {
   const closeBtn  = overlay.querySelector(".modal-close");
 
   function openModal(projectId) {
-    // prefer full details from the hidden store; fallback to the card contents
     let content = "";
     const fromStore = detailsStore && detailsStore.querySelector(`#details-${projectId}`);
     if (fromStore) {
@@ -108,7 +90,6 @@ resetBtn.addEventListener("click", () => {
     overlay.style.display = "flex";
     document.body.style.overflow = "hidden"; // lock page scroll
 
-    // init gallery if present
     initGallery(modalBody.querySelector(".gallery"));
   }
 
@@ -126,7 +107,6 @@ resetBtn.addEventListener("click", () => {
     if (e.key === "Escape") closeModal();
   });
 
-  // click cards → open modal
   cards.forEach(card => {
     card.addEventListener("click", () => openModal(card.dataset.project));
   });
@@ -135,93 +115,94 @@ resetBtn.addEventListener("click", () => {
      Gallery inside modal
      ===================== */
   function initGallery(gallery) {
-  if (!gallery) return;
+    if (!gallery) return;
 
-  const track = gallery.querySelector(".gallery-track");
-  const images = track.querySelectorAll("img");
-  const prevBtn = gallery.querySelector("[data-prev]");
-  const nextBtn = gallery.querySelector("[data-next]");
-  const dotsContainer = gallery.querySelector("[data-dots]");
+    const track = gallery.querySelector(".gallery-track");
+    const images = track.querySelectorAll("img");
+    const prevBtn = gallery.querySelector("[data-prev]");
+    const nextBtn = gallery.querySelector("[data-next]");
+    const dotsContainer = gallery.querySelector("[data-dots]");
 
-  let index = 0;
-  let autoSlideInterval;
-  let isHovered = false;
+    let index = 0;
+    let autoSlideInterval;
+    let isHovered = false;
 
-  // create dots
-  dotsContainer.innerHTML = "";
-  images.forEach((_, i) => {
-    const dot = document.createElement("button");
-    if (i === 0) dot.classList.add("active");
-    dot.addEventListener("click", () => {
-      index = i;
+    // create dots
+    dotsContainer.innerHTML = "";
+    images.forEach((_, i) => {
+      const dot = document.createElement("button");
+      if (i === 0) dot.classList.add("active");
+      dot.addEventListener("click", () => {
+        index = i;
+        updateGallery();
+        if (!isHovered) resetAutoSlide();
+      });
+      dotsContainer.appendChild(dot);
+    });
+
+    function updateGallery() {
+      track.style.transform = `translateX(-${index * 100}%)`;
+      dotsContainer.querySelectorAll("button").forEach((dot, i) => {
+        dot.classList.toggle("active", i === index);
+      });
+    }
+
+    function showNext() {
+      index = (index + 1) % images.length;
       updateGallery();
+    }
+
+    function showPrev() {
+      index = (index - 1 + images.length) % images.length;
+      updateGallery();
+    }
+
+    // Auto-slide
+    function startAutoSlide() {
+      autoSlideInterval = setInterval(showNext, 5000);
+    }
+    function stopAutoSlide() {
+      clearInterval(autoSlideInterval);
+    }
+    function resetAutoSlide() {
+      stopAutoSlide();
+      startAutoSlide();
+    }
+
+    prevBtn.addEventListener("click", () => {
+      showPrev();
       if (!isHovered) resetAutoSlide();
     });
-    dotsContainer.appendChild(dot);
-  });
-
-  function updateGallery() {
-    track.style.transform = `translateX(-${index * 100}%)`;
-    dotsContainer.querySelectorAll("button").forEach((dot, i) => {
-      dot.classList.toggle("active", i === index);
+    nextBtn.addEventListener("click", () => {
+      showNext();
+      if (!isHovered) resetAutoSlide();
     });
-  }
 
-  function showNext() {
-    index = (index + 1) % images.length;
+    // Keyboard navigation
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowLeft") { showPrev(); if (!isHovered) resetAutoSlide(); }
+      if (e.key === "ArrowRight") { showNext(); if (!isHovered) resetAutoSlide(); }
+    });
+
+    gallery.addEventListener("mouseenter", () => {
+      isHovered = true;
+      stopAutoSlide();
+    });
+    gallery.addEventListener("mouseleave", () => {
+      isHovered = false;
+      startAutoSlide();
+    });
+
     updateGallery();
-  }
-
-  function showPrev() {
-    index = (index - 1 + images.length) % images.length;
-    updateGallery();
-  }
-
-  // Auto-slide
-  function startAutoSlide() {
-    autoSlideInterval = setInterval(showNext, 5000);
-  }
-  function stopAutoSlide() {
-    clearInterval(autoSlideInterval);
-  }
-  function resetAutoSlide() {
-    stopAutoSlide();
     startAutoSlide();
   }
-
-  // Buttons
-  prevBtn.addEventListener("click", () => {
-    showPrev();
-    if (!isHovered) resetAutoSlide();
-  });
-  nextBtn.addEventListener("click", () => {
-    showNext();
-    if (!isHovered) resetAutoSlide();
-  });
-
-  // Keyboard navigation
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "ArrowLeft") { showPrev(); if (!isHovered) resetAutoSlide(); }
-    if (e.key === "ArrowRight") { showNext(); if (!isHovered) resetAutoSlide(); }
-  });
-
-  // Pause/resume on hover
-  gallery.addEventListener("mouseenter", () => {
-    isHovered = true;
-    stopAutoSlide();
-  });
-  gallery.addEventListener("mouseleave", () => {
-    isHovered = false;
-    startAutoSlide();
-  });
-
-  updateGallery();
-  startAutoSlide();
-}
 
   /* =====================
-     Footer year
+     Prevent project modal when clicking GitHub links
      ===================== */
-  const yearEl = document.getElementById("year");
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
+  document.querySelectorAll('.project-github').forEach(link => {
+    link.addEventListener('click', e => {
+      e.stopPropagation(); // stops the click from bubbling up to the card
+    });
+  });
 });

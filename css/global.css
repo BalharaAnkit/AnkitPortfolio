@@ -79,7 +79,30 @@ header.scrolled { box-shadow: 0 6px 18px rgba(0,0,0,.45); }
 }
 
 /* ——— Footer ——— */
-footer { border-top: 1px solid rgba(255,255,255,.06); padding: 20px 0 60px; color: var(--muted); }
+footer { border-top: 2px solid rgba(139, 92, 246, 0.7); /* brighter violet line */
+  padding: 20px 0 60px;
+  color: var(--muted);
+  position: relative;
+  box-shadow: 0 -2px 12px rgba(139, 92, 246, 0.6); }
+
+/* ===== Footer GitHub Icons ===== */
+.footer-github-personal img {
+  filter: brightness(0) saturate(100%) invert(34%) sepia(93%) saturate(2000%) hue-rotate(200deg) brightness(95%) contrast(95%);
+  /* blue tone */
+  transition: filter var(--transition);
+}
+.footer-github-personal:hover img {
+  filter: brightness(0) saturate(100%) invert(34%) sepia(93%) saturate(2000%) hue-rotate(200deg) brightness(110%) contrast(105%) drop-shadow(0 0 6px #3b82f6);
+}
+
+.footer-github-placement img {
+  filter: brightness(0) saturate(100%) invert(42%) sepia(91%) saturate(500%) hue-rotate(120deg) brightness(90%) contrast(90%);
+  /* green tone */
+  transition: filter var(--transition);
+}
+.footer-github-placement:hover img {
+  filter: brightness(0) saturate(100%) invert(42%) sepia(91%) saturate(500%) hue-rotate(120deg) brightness(110%) contrast(105%) drop-shadow(0 0 6px #10b981);
+}
 
 /* ——— Reveal on Scroll ——— */
 .reveal { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
@@ -124,4 +147,35 @@ footer { border-top: 1px solid rgba(255,255,255,.06); padding: 20px 0 60px; colo
 }
 .email-link:hover img {
   filter: brightness(0) invert(1) drop-shadow(0 0 6px var(--accent));
+}
+/* ===== GitHub Buttons (Personal vs Placement) ===== */
+.github-personal {
+  background: linear-gradient(180deg, rgba(59,130,246,.25), rgba(59,130,246,.15)); /* blue */
+  border: 1px solid rgba(59,130,246,.35);
+}
+.github-personal:hover {
+  background: linear-gradient(180deg, rgba(59,130,246,.45), rgba(59,130,246,.25));
+  box-shadow: 0 14px 40px rgba(59,130,246,.35);
+}
+
+.github-placement {
+  background: linear-gradient(180deg, rgba(16,185,129,.25), rgba(16,185,129,.15)); /* green */
+  border: 1px solid rgba(16,185,129,.35);
+}
+.github-placement:hover {
+  background: linear-gradient(180deg, rgba(16,185,129,.45), rgba(16,185,129,.25));
+  box-shadow: 0 14px 40px rgba(16,185,129,.35);
+}
+
+/* Keep icon alignment tidy */
+.btn img {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  vertical-align: middle;
+  filter: brightness(0) invert(1);
+  transition: filter var(--transition);
+}
+.btn:hover img {
+  filter: brightness(0) invert(1) drop-shadow(0 0 4px currentColor);
 }
