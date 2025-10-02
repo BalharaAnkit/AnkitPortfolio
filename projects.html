@@ -365,8 +365,8 @@
   <div class="project-content">
     <h3>Coding Blog</h3>
     <p>
-      A personal blog built with <strong>Bootstrap</strong> to share coding tips and tutorials.
-      Practised responsive design and GitHub deployment.
+      A modern blog application built with <strong>React + TypeScript</strong> and the 
+      <strong>GitHub REST API</strong> for real posts, tags, and filters.
       <span class="see-more">See more →</span>
     </p>
 
@@ -375,6 +375,7 @@
       <div class="badges">
         <span class="badge">Personal</span>
         <span class="badge">Frontend</span>
+        <span class="badge">Data</span>
       </div>
 
       <a class="project-github project-github-personal"
@@ -389,6 +390,67 @@
        target="_blank" class="btn outline" style="margin-top:10px;">
       Live Demo
     </a>
+  </div>
+</article>
+
+<!-- Oaxaca Restaurant -->
+<article class="project-card reveal" data-type="personal frontend backend" data-project="oaxaca"
+         title="Click to open details">
+  <span class="card-hint" aria-hidden="true">Click to view</span>
+  <img src="assets/projects/oaxaca.jpg" alt="Oaxaca Restaurant project screenshot" />
+  <div class="project-content">
+    <h3>Oaxaca Restaurant</h3>
+    <p>
+      A full-stack restaurant management platform built with <strong>Django</strong> and <strong>Bootstrap</strong>. 
+      Features role-based dashboards for customers, waiters, and chefs with ordering, table booking, 
+      and stock/order management.
+      <span class="see-more">See more →</span>
+    </p>
+    <div class="badges-icons">
+      <div class="badges">
+        <span class="badge">Personal</span>
+        <span class="badge">Frontend</span>
+        <span class="badge">Backend</span>
+      </div>
+      <a class="project-github project-github-personal"
+         href="https://github.com/BalharaAnkit/Oaxaca-Restaurant-" 
+         target="_blank" rel="noreferrer noopener"
+         aria-label="Personal GitHub">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="Personal GitHub" />
+      </a>
+    </div>
+    <a href="https://balharaankit.github.io/AnkitBootStrap/" 
+       target="_blank" class="btn outline" style="margin-top:10px;">
+      Live Demo
+    </a>
+  </div>
+  </article>
+
+  <!-- Jarvis AI Assistant -->
+   <article class="project-card reveal" data-type="personal ai backend" data-project="jarvisai"
+         title="Click to open details">
+  <span class="card-hint" aria-hidden="true">Click to view</span>
+  <img src="assets/projects/jarvis.jpg" alt="Jarvis AI assistant screenshot" />
+  <div class="project-content">
+    <h3>Jarvis AI Assistant</h3>
+    <p>
+      A personal AI assistant built in <strong>Python</strong> with <strong>voice and text input</strong>,
+      powered by <strong>Groq AI</strong> for intelligent Q&amp;A and system automation.
+      <span class="see-more">See more →</span>
+    </p>
+    <div class="badges-icons">
+      <div class="badges">
+        <span class="badge">Personal</span>
+        <span class="badge">AI</span>
+        <span class="badge">Backend</span>
+      </div>
+      <a class="project-github project-github-personal"
+         href="https://github.com/BalharaAnkit/JarvisAI"
+         target="_blank" rel="noreferrer noopener"
+         aria-label="Personal GitHub">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="Personal GitHub" />
+      </a>
+    </div>
   </div>
 </article>
 
@@ -711,7 +773,6 @@
 </div>
 
     <!-- Coding Blog (Personal) -->
-    <!-- Coding Blog (Personal) -->
 <div class="project-details" id="details-codingblog" data-project="codingblog" hidden>
   <div class="details-heading">
     <h2>Coding Blog</h2>
@@ -732,9 +793,86 @@
   </div>
 
   <div class="details-copy">
-    <p>A personal blog where I practised <strong>responsive design</strong>, <strong>component-driven layouts</strong>, and GitHub Pages deployment.</p>
-    <p><strong>Technologies used:</strong> HTML, CSS, Bootstrap, GitHub Pages</p>
+    <p>A coding blog developed with <strong>React + TypeScript</strong> that consumes real posts through the <strong>GitHub REST API</strong>.</p>
+    <ul>
+      <li>Posts written in Markdown and served via GitHub Issues as a lightweight CMS</li>
+      <li><strong>Filters</strong>, client-side <strong>search</strong>, and API-driven <strong>pagination</strong></li>
+      <li>Enhanced readability with <strong>syntax highlighting</strong> and “reading time” estimates</li>
+      <li>Responsive design, <strong>dark mode</strong>, and accessible navigation</li>
+      <li>CI/CD pipeline using <strong>GitHub Actions</strong> to deploy to GitHub Pages</li>
+    </ul>
+    <p><strong>Technologies used:</strong> React, TypeScript, Vite, GitHub REST API, Bootstrap</p>
     <p><a href="https://balharaankit.github.io/AnkitBootStrap/" target="_blank" class="btn outline">Live Demo</a></p>
+  </div>
+</div>
+
+<!-- Oaxaca Restaurant (Personal) -->
+<div class="project-details" id="details-oaxaca" data-project="oaxaca" hidden>
+  <div class="details-heading">
+    <h2>Oaxaca Restaurant App</h2>
+    <a class="project-github project-github-personal" 
+       href="https://github.com/BalharaAnkit/Oaxaca-Restaurant-" 
+       target="_blank" rel="noreferrer noopener" 
+       aria-label="Personal GitHub">
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="Personal GitHub" />
+    </a>
+  </div>
+
+  <div class="gallery" data-gallery>
+    <button class="gallery-nav prev" data-prev aria-label="Previous image">‹</button>
+    <div class="gallery-track">
+      <img src="assets/projects/oaxaca-1.jpg" alt="Oaxaca app screenshot 1" />
+      <img src="assets/projects/oaxaca-2.jpg" alt="Oaxaca app screenshot 2" />
+      <img src="assets/projects/oaxaca-3.jpg" alt="Oaxaca app screenshot 3" />
+    </div>
+    <button class="gallery-nav next" data-next aria-label="Next image">›</button>
+    <div class="gallery-dots" data-dots></div>
+  </div>
+
+  <div class="details-copy">
+    <p>A restaurant platform that demonstrates full-stack development with a focus on <strong>real-world workflows</strong>.</p>
+    <ul>
+      <li><strong>Role-based dashboards</strong> for customers, waiters, and chefs</li>
+      <li>Features include <strong>menu browsing, table booking, ordering, and stock/order management</strong></li>
+      <li>Authentication system with <strong>hashed passwords</strong> and custom roles</li>
+      <li>Deployment-ready with <strong>Gunicorn, WhiteNoise</strong>, and static asset optimization</li>
+    </ul>
+    <p><strong>Technologies used:</strong> Django, Python, SQLite, Bootstrap 5, JavaScript, Gunicorn, WhiteNoise</p>
+    <p><a href="https://oaxaca-demo-link.com" target="_blank" class="btn outline">Live Demo</a></p>
+  </div>
+</div>
+
+<!-- Jarvis AI Assistant (Personal) -->
+ <div class="project-details" id="details-jarvisai" data-project="jarvisai" hidden>
+  <div class="details-heading">
+    <h2>Jarvis AI Assistant</h2>
+    <a class="project-github project-github-personal" 
+       href="https://github.com/BalharaAnkit/JarvisAI" 
+       target="_blank" rel="noreferrer noopener" aria-label="Personal GitHub">
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="Personal GitHub" />
+    </a>
+  </div>
+
+  <div class="gallery" data-gallery>
+    <button class="gallery-nav prev" data-prev aria-label="Previous image">‹</button>
+    <div class="gallery-track">
+      <img src="assets/projects/jarvis-1.jpg" alt="Jarvis AI screenshot 1" />
+      <img src="assets/projects/jarvis-2.jpg" alt="Jarvis AI screenshot 2" />
+      <img src="assets/projects/jarvis-3.jpg" alt="Jarvis AI screenshot 3" />
+    </div>
+    <button class="gallery-nav next" data-next aria-label="Next image">›</button>
+    <div class="gallery-dots" data-dots></div>
+  </div>
+
+  <div class="details-copy">
+    <p>A personal assistant inspired by “Jarvis”, developed in <strong>Python</strong> with both <strong>voice</strong> and <strong>text-based interaction</strong>.</p>
+    <ul>
+      <li>Powered by <strong>Groq AI</strong> for natural Q&amp;A and contextual responses</li>
+      <li>Supports **voice commands** for opening apps, fetching time, and performing system tasks</li>
+      <li>Extensible design for integrating APIs (weather, news, reminders) and advanced workflows</li>
+      <li>Future roadmap includes a dedicated **desktop UI**, cross-platform packaging, and **public deployment**</li>
+    </ul>
+    <p><strong>Technologies used:</strong> Python, Groq AI API, SpeechRecognition, pyttsx3, pyautogui, webbrowser</p>
   </div>
 </div>
 
